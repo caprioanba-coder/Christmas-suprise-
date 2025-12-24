@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merry Christmas ❤️</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  background:#f6f8fb;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+.page{
+  position:absolute;
+  width:90%;
+  max-width:360px;
+  background:#fff;
+  border-radius:16px;
+  padding:24px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.1);
+  display:none;
+}
+
+.page.active{display:block}
+
+h1,h2{
+  font-family: "Segoe Script", cursive;
+  margin-bottom:16px;
+}
+
+.btn{
+  margin-top:20px;
+  padding:12px 24px;
+  border-radius:24px;
+  background:#1e90ff;
+  color:#fff;
+  border:none;
+  font-size:16px;
+}
+
+.gift{
+  font-size:80px;
+  margin:20px 0;
+  animation:bounce 1.5s infinite;
+}
+
+.card{
+  background:#eef3f8;
+  padding:18px;
+  border-radius:12px;
+  font-size:15px;
+  line-height:1.6;
+}
+
+.notes{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin-top:20px;
+}
+
+.note{
+  width:90px;
+  height:70px;
+  background:#ffdce5;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-radius:6px;
+  font-weight:600;
+  animation:pop .6s ease forwards;
+}
+
+@keyframes bounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+
+@keyframes pop{
+  from{transform:scale(0);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+/* snow */
+.snow{
+  position:fixed;
+  top:-10px;
+  font-size:12px;
+  opacity:.6;
+  animation:fall linear infinite;
+}
+@keyframes fall{
+  to{transform:translateY(110vh)}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active">
+  ⛄
+  <h2>This Christmas,<br>something special for you</h2>
+  <button class="btn" onclick="next()">Open it</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <h2>For someone special</h2>
+  <div class="gift">🎁</div>
+  <small>Tap me!</small>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <h2>Merry Christmas<br>to my Cutiepie</h2>
+  <div class="card">Tap to read 🎄</div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <div class="card">
+    This Christmas, I just want you to know how special you are to me.<br><br>
+    You are not just a part of my life,
+    you are the reason behind so many smiles.
+  </div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <div class="card">
+    I may not be perfect, but I promise one thing —<br><br>
+    I’ll always try my best to be there for you.<br><br>
+    Merry Christmas ❤️🎄
+  </div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page">
+  <h2>Just for you</h2>
+  <p>I don’t need a gift, because…</p>
+  <div class="notes">
+    <div class="note">You</div>
+    <div class="note">are</div>
+    <div class="note">my</div>
+    <div class="note">cutest</div>
+    <div class="note">gift 🎁</div>
+  </div>
+</div>
+
+<script>
+let pages=document.querySelectorAll(".page");
+let i=0;
+
+function next(){
+  pages[i].classList.remove("active");
+  i++;
+  if(pages[i]) pages[i].classList.add("active");
+}
+
+// tap anywhere
+document.body.addEventListener("click",()=>{
+  if(i<pages.length-1) next();
+});
+
+// snow
+for(let i=0;i<25;i++){
+  let s=document.createElement("div");
+  s.className="snow";
+  s.innerHTML="❄️";
+  s.style.left=Math.random()*100+"vw";
+  s.style.animationDuration=5+Math.random()*5+"s";
+  document.body.appendChild(s);
+}
+</script>
+
+</body>
+</html>
